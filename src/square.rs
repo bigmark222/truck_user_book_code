@@ -1,0 +1,26 @@
+use std::iter::FromIterator;
+use truck_meshalgo::prelude::*;
+
+/// A unit square in the XY plane made from two triangles.
+pub fn square() -> PolygonMesh {
+
+    let positions = vec![
+        Point3::new(0.0, 0.0, 0.0), // bottom-left [0]
+        Point3::new(1.0, 0.0, 0.0), // bottom-right [1]
+        Point3::new(1.0, 1.0, 0.0), // top-right [2]
+        Point3::new(0.0, 1.0, 0.0), // top-left [3]
+    ];
+
+    let attrs = StandardAttributes {
+    positions,
+    ..Default::default()
+    };
+
+    let faces = Faces::from_iter([
+    [0, 1, 2], // bottom-right triangle
+    [0, 2, 3], // top-left triangle
+    ]);
+
+    PolygonMesh::new(attrs, faces)
+
+}
