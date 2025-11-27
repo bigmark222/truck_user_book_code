@@ -2,8 +2,9 @@
 /target
 **/*.rs.bk
 
-# Local output artifacts
-/output
+# Local output artifacts (keep folder, ignore generated files)
+/output/*
+!/output/.gitkeep
 
 # OS/editor cruft
 .DS_Store
